@@ -14,6 +14,11 @@
 #include "EVKD.h"
 #include <stdio.h>
 #include <string.h>
+#include <string>
+#include <iostream>
+#include <limits>
+#include <cstdlib>
+using namespace std;
 using namespace std;
 
 EVKD::EVKD() {
@@ -57,7 +62,9 @@ EVKD* EVKD::GetNext() {
 }
 
 void EVKD::SetNext(EVKD* in) {
-    Next = in;
+    cout<<"Momentanes Next: "<<Next<<"\n\n\n";
+    cout<<"Adresse in: "<<in<<"\n\n\n";
+    this->Next = in;
 }
 
 bool EVKD::operator==(EVKD& in) {

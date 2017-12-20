@@ -28,47 +28,66 @@ TEXT::~TEXT() {
 }
 
 void TEXT::anhaenge(char* in) {
-    cout << in <<"\n";
+    //cout << in <<"\n";
     EVKD* obj = new EVKD(in,nullptr);
-    cout << obj <<"\n";
+    //cout << obj <<"\n";
     EVKD* temp;
     if (Start==nullptr){
         Start = obj;
-        cout << obj->GetDaten() << "\n";
+        //cout << obj->GetDaten() << "\n";
     }else{
         temp = Start;
         while(temp->GetNext()!=nullptr){
             temp = temp->GetNext();
         }
         temp->SetNext(obj);
-        cout << obj->GetDaten() << "\n";
+        //cout << obj->GetDaten() << "\n";
     }
     anz++;
 }
 
 void TEXT::einfuegeSortiert(EVKD* in, int max) {
     int i;
-    EVKD *temp, *temp_2;
+    cout<< "Daten von in: " << in->GetDaten() <<"\n\n\n";
+    cout<<"Adresse Start: "<<Start<<"\n\n\n";
+    EVKD *temp, *temp_2,*temp_3;
     temp=Start;
+    if(Start==nullptr){
+        Start=in;
+        in->SetNext(nullptr);
+    }else{
     for(i=0;i<max;i++){
-        if(*temp==*in){
-            if(temp==Start){
-                Start==in;
-                in->SetNext(nullptr);
+        if(temp!=nullptr){
+        if(*temp>*in){
+            if(i==0){
+                Start=in;
+                in->SetNext(temp);
+                break;
             }else{
                 temp_2->SetNext(in);
                 in->SetNext(temp);
+                break;
             }
         }else{
                 temp_2=temp;
                 temp=temp->GetNext();
             }
+        }
     }
-    anz++;
+    if(temp==nullptr){
+        temp_2->SetNext(in);
+        in->SetNext(nullptr);
+    }
+    }
+    anz ++;
+    cout<<"Anzahl Objekte: "<<anz<<"\n";
+    zeigDich();
+    cout<<"\n\n";
 }
 
 void TEXT::iSort() {
-    int i;
+    int i,a;
+    a=anz;
     EVKD* sort= new EVKD[anz];
     EVKD* temp;
     temp = Start;
@@ -76,11 +95,17 @@ void TEXT::iSort() {
         sort[i] = *temp;
         temp = temp->GetNext();
     }
-    for (i=0;i<anz;i++){
+    for (i=0;i<a;i++){
+        //zeigDich();
+        //cout<<"\n\n";
         loesche(1);
+        
     }
-    for (i=0;i<anz;i++){
-        einfuegeSortiert(&sort[i],anz);
+    cout<<"Anzahl: "<<anz<<"\n\n";
+    //zeigDich();
+    
+    for (i=0;i<a;i++){
+        this->einfuegeSortiert(&sort[i],anz);
     }
 }
 
@@ -97,14 +122,17 @@ EVKD* TEXT::loesche(int pos) {
         }
         temp_2->SetNext(temp->GetNext());
     }
+    anz--;
 }
 
 void TEXT::zeigDich() {
     EVKD* temp;
+    int a=1;
     temp = Start;
     do{
-        cout<< "Adresse: " << temp << " Wert: " << temp->GetDaten() <<"\n";
+        cout<<"Nr: "<<a<< "\tAdresse: " << temp << "\tWert: " << temp->GetDaten()<<"\t" <<" Next: "<<temp->GetNext()<< "\n";
         temp = temp->GetNext();
+        a++;
     }while(temp!=nullptr);
 }
 

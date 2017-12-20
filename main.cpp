@@ -25,6 +25,8 @@ using namespace std;
 int main(int argc, char* argv) {
     int choice = 0;
     TEXT* allgemein;
+    char temp[50];
+    EVKD* einf;
     int i;
     char* name[]={"Schmitz, Josef","Mueller, Josi","Schmitz, Anna", "Mueller, Josef","Schmitz, Josi","Mueller, Anna", "Meier, Josef","Zacher, Josi","Anker, Anna"};
     do{
@@ -55,13 +57,16 @@ int main(int argc, char* argv) {
             allgemein->zeigDich();
                 break;
         case 3 : 
-            char temp[50];
-            cout<< "Bitte geben Sie den anzuhaengenden Text an\n";
+            
+            cout<< "Bitte geben Sie den anzuhaengenden Text an.\n";
             scanf("%s",&temp);
             allgemein->anhaenge(temp);
                 break;
         case 4 : 
-            
+            cout<< "Bitte geben Sie den anzuhaengenden Text an.\n";
+            scanf("%s",&temp);
+            einf = new EVKD(temp,nullptr);
+            allgemein->einfuegeSortiert(einf,allgemein->anz);
                 break;
         case 5 : 
             int a;
@@ -72,6 +77,9 @@ int main(int argc, char* argv) {
         case 6 : 
             allgemein->iSort();
                 break;
+                
+        case 7 :
+            cout<<"Anzahl: "<<allgemein->anz<<"\n\n";
         case 12 : 
                 break;
         default:
