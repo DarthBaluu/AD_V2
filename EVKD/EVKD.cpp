@@ -34,7 +34,7 @@ EVKD::EVKD(char* LPSZDaten, EVKD* N) {
     for (i=0;i<=a;i++){
         daten[i]=LPSZDaten[i];
     }
-    anz=a;
+    anz=a+1;
 }
 
 EVKD::EVKD(const EVKD& orig) {
@@ -62,8 +62,8 @@ EVKD* EVKD::GetNext() {
 }
 
 void EVKD::SetNext(EVKD* in) {
-    cout<<"Momentanes Next: "<<Next<<"\n\n\n";
-    cout<<"Adresse in: "<<in<<"\n\n\n";
+    //cout<<"Momentanes Next: "<<Next<<"\n\n\n";
+    //cout<<"Adresse in: "<<in<<"\n\n\n";
     this->Next = in;
 }
 

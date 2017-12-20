@@ -44,10 +44,6 @@ int main(int argc, char* argv) {
         case 1 :
         
             allgemein = new TEXT();
-            /*for (i=0;i<sizeof(name);i++){
-                allgemein->anhaenge(name[i]);
-            }*/
-            
             for (i=0;i<9;i++){
                 allgemein->anhaenge(name[i]);
             }

@@ -48,41 +48,41 @@ void TEXT::anhaenge(char* in) {
 
 void TEXT::einfuegeSortiert(EVKD* in, int max) {
     int i;
-    cout<< "Daten von in: " << in->GetDaten() <<"\n\n\n";
-    cout<<"Adresse Start: "<<Start<<"\n\n\n";
-    EVKD *temp, *temp_2,*temp_3;
+    //cout<< "Daten von in: " << in->GetDaten() <<"\n\n\n";
+    //cout<<"Adresse Start: "<<Start<<"\n\n\n";
+    EVKD *temp, *temp_2;
     temp=Start;
     if(Start==nullptr){
         Start=in;
         in->SetNext(nullptr);
     }else{
-    for(i=0;i<max;i++){
-        if(temp!=nullptr){
-        if(*temp>*in){
-            if(i==0){
-                Start=in;
-                in->SetNext(temp);
-                break;
+        for(i=0;i<max;i++){
+            if(temp!=nullptr){
+            if(*temp>*in){
+                if(i==0){
+                    Start=in;
+                    in->SetNext(temp);
+                    break;
+                }else{
+                    temp_2->SetNext(in);
+                    in->SetNext(temp);
+                    break;
+                }
             }else{
-                temp_2->SetNext(in);
-                in->SetNext(temp);
-                break;
-            }
-        }else{
-                temp_2=temp;
-                temp=temp->GetNext();
+                    temp_2=temp;
+                    temp=temp->GetNext();
+                }
             }
         }
-    }
     if(temp==nullptr){
         temp_2->SetNext(in);
         in->SetNext(nullptr);
     }
     }
     anz ++;
-    cout<<"Anzahl Objekte: "<<anz<<"\n";
-    zeigDich();
-    cout<<"\n\n";
+    //cout<<"Anzahl Objekte: "<<anz<<"\n";
+    //zeigDich();
+    //cout<<"\n\n";
 }
 
 void TEXT::iSort() {
@@ -101,7 +101,7 @@ void TEXT::iSort() {
         loesche(1);
         
     }
-    cout<<"Anzahl: "<<anz<<"\n\n";
+    //cout<<"Anzahl: "<<anz<<"\n\n";
     //zeigDich();
     
     for (i=0;i<a;i++){
@@ -134,5 +134,6 @@ void TEXT::zeigDich() {
         temp = temp->GetNext();
         a++;
     }while(temp!=nullptr);
+    cout<<"Anzahl gem. STAN: "<<anz<<"\n\n";
 }
 
