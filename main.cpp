@@ -14,7 +14,7 @@
 #include <cstdlib>
 #include "EVKD/EVKD.h"
 #include "TEXT.h"
-#include <string>
+#include <string.h>
 #include <iostream>
 #include <limits>
 using namespace std;
@@ -25,7 +25,7 @@ using namespace std;
 int main(int argc, char* argv) {
     int choice = 0;
     TEXT* allgemein;
-    char temp[50];
+    char* temp=new char[50];
     EVKD* einf;
     int i;
     char* name[]={"Schmitz, Josef","Mueller, Josi","Schmitz, Anna", "Mueller, Josef","Schmitz, Josi","Mueller, Anna", "Meier, Josef","Zacher, Josi","Anker, Anna"};
@@ -39,7 +39,7 @@ int main(int argc, char* argv) {
     cout<< "(12) Beenden\n";
     
     cin>> choice;
-    //cin.ignore(numeric_limits<streamsize>::max(),'\n');
+    cin.ignore(numeric_limits<streamsize>::max(),'\n');
     switch(choice){
         case 1 :
         
@@ -55,12 +55,12 @@ int main(int argc, char* argv) {
         case 3 : 
             
             cout<< "Bitte geben Sie den anzuhaengenden Text an.\n";
-            scanf("%s",&temp);
+            cin.getline(temp,50);
             allgemein->anhaenge(temp);
                 break;
         case 4 : 
             cout<< "Bitte geben Sie den anzuhaengenden Text an.\n";
-            scanf("%s",&temp);
+            cin.getline(temp,50);
             einf = new EVKD(temp,nullptr);
             allgemein->einfuegeSortiert(einf,allgemein->anz);
                 break;
