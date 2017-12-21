@@ -19,7 +19,6 @@
 #include <limits>
 #include <cstdlib>
 using namespace std;
-using namespace std;
 
 EVKD::EVKD() {
 }

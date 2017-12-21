@@ -32,7 +32,7 @@ void TEXT::anhaenge(char* in) {
     EVKD* obj = new EVKD(in,nullptr);
     //cout << obj <<"\n";
     EVKD* temp;
-    if (Start==nullptr){
+    if (Start==nullptr){    //Liste ist leer
         Start = obj;
         //cout << obj->GetDaten() << "\n";
     }else{
@@ -52,7 +52,7 @@ void TEXT::einfuegeSortiert(EVKD* in, int max) {
     //cout<<"Adresse Start: "<<Start<<"\n\n\n";
     EVKD *temp, *temp_2;
     temp=Start;
-    if(Start==nullptr){
+    if(Start==nullptr){ //Liste leer
         Start=in;
         in->SetNext(nullptr);
     }else{
@@ -123,6 +123,7 @@ EVKD* TEXT::loesche(int pos) {
         temp_2->SetNext(temp->GetNext());
     }
     anz--;
+    return temp;
 }
 
 void TEXT::zeigDich() {
